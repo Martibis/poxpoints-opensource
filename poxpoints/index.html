@@ -1,0 +1,177 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+
+  <title>Poxpoints</title>
+  <meta name="google-signin-client_id" content="YOURGOOGLEAPPID.apps.googleusercontent.com">
+  <meta name="description" content="Poxpoints, a rune store and trader for the game Poxnora">
+  <meta name="author" content="Poxpoints">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.min.css?v=10.0">
+
+</head>
+
+<body>
+  <div class="banner-error">
+    <p></p>
+  </div>
+  <div id="snogvie-success">
+    <img src="img/snogvie.gif" />
+    <p>Success, enjoy your Poxpoints!</p>
+  </div>
+  <script src="https://www.paypal.com/sdk/js?client-id=YOURCLIENTID&currency=USD"
+    data-sdk-integration-source="button-factory"></script>
+  <div id="paypal">
+    <!-- <div class="processing"><p>Processing your order...</p></div> -->
+    <div class="paypal-top">
+      <input id="paypal-points" type="number" min="0" step="50000"
+        placeholder="Amount of Poxpoints (divisible by 1000)">
+      <p class="paypal-usd">0.5 USD</p>
+    </div>
+    <!-- <p class="paypal-button">Pay with Paypal</p> -->
+    <div id="paypal-buttons"></div>
+  </div>
+  <div id="overlay"></div>
+  <div class="floating-cart-btn cart-toggle">
+    <div class="cart-image">
+      <img src="icons/cart.svg" />
+    </div>
+    <div class="cart-in-out">
+      <p class="total-in">+ 0 PP</p>
+      <p class="total-out">- 0 PP</p>
+    </div>
+  </div>
+
+  <div class="page-wrapper">
+    <div class="beta-banner">
+      <p>Poxpoints is currently in <b>BETA</b>, so stuff might break! If so reach out to me on Discord: <b
+          class="nobr">Martibis | Haveyoubeenhere#2314</b>. There is an algorithm that will improve pricing over the
+        next few weeks.</p>
+    </div>
+    <div class="flex-top-bar">
+      <!-- <div class="balance">
+      <p>Your balance is: <b>0 PP</b></p>
+    </div> -->
+      <div class="sign-in">
+        <div id="my-signin2"></div>
+      </div>
+      <div class="buy-pp">
+        <div class="btn-one">
+          <p>Buy Poxpoints</p>
+        </div>
+      </div>
+      <a href="https://poxpoints.com/masstradein">
+        <div class="btn-one">
+          <p>Mass trade in</p>
+        </div>
+      </a>
+      <a target="_blank" href="mailto:poxnorapoints@gmail.com" class="contact-me">
+        <div class="btn-one">
+          <p>Contact me</p>
+        </div>
+      </a>
+      <div class="sync-stock">
+        <div class="btn-one">
+          <p>Sync my stock</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="cart-trader-flex">
+
+      <div class="trader">
+        <div class="trader-filters">
+          <!-- <div class="trader-search">
+          <p>Search</p>
+        </div> -->
+          <div class="search-placeholder"></div>
+          <select id="type" class="trader-select">
+            <option value="1">Champs</option>
+            <option value="2">Spells</option>
+            <option value="3">Equips</option>
+            <option value="4">Relics</option>
+            <!-- TODO: UNCOMMENT WHEN TOKEN / TICKET LOGIC IS READY-->
+            <!-- <option value="5">Tickets</option>
+          <option value="6">Tokens</option> -->
+          </select>
+          <select id="faction" class="trader-select">
+            <option value="-1">All</option>
+            <option value="5" selected>FS</option>
+            <option value="1">FW</option>
+            <option value="6">IS</option>
+            <option value="7">KF</option>
+            <option value="8">ST</option>
+            <option value="3">SL</option>
+            <option value="4">SP</option>
+            <option value="2">UD</option>
+          </select>
+          <select id="rarity" class="trader-select">
+            <option value="-1">All</option>
+            <option value="1">C</option>
+            <option value="2">UC</option>
+            <option value="3">RARE</option>
+            <option value="4">EXO</option>
+            <option value="5">LEG</option>
+            <option value="6">LE</option>
+          </select>
+          <p class="ctrlf">Search with CTRL + F</p>
+        </div>
+        <div class="trader-scroll">
+        </div>
+      </div>
+      <div class="cart">
+        <div class="cart-title">
+          <div class="cart-image">
+            <img src="icons/cart.svg" />
+          </div>
+          <div class="cart-in-out">
+            <p class="total-in">+ 0 PP</p>
+            <p class="total-out">- 0 PP</p>
+          </div>
+        </div>
+        <div class="cart-items">
+          <!-- <div class="cart-info"><p></p></div> -->
+        </div>
+        <div class="check-out">
+          <div class="check-out-message accepted">
+            <p>Test</p>
+          </div>
+          <div class="check-out-top">
+            <div class="manual-automated-toggle">
+              <div class="manual-button active">
+                <p>Manual</p>
+              </div>
+              <div class="automated-button inactive">
+                <p>Automated</p>
+              </div>
+            </div>
+            <p class="newbalance">New balance: <b><span class="newbalance-span">0</span> PP</b></p>
+          </div>
+          <div class="manual-automated-input">
+            <div class="manual-input active">
+              <input id="trade-id" type="number" placeholder="Trade id (e.g.: 3738772)">
+            </div>
+            <div class="automated-input inactive">
+              <input id="pox-username" type="text" placeholder="Your Poxnora username">
+              <input id="pox-pw" type="password" placeholder="Your Poxnora password">
+            </div>
+          </div>
+          <div class="check-out-button">
+            <p>Check out</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="js/jquery.js"></script>
+  <script src="js/scripts.js?v=10.0"></script>
+  <script src="https://apis.google.com/js/platform.js?onload=renderButton"></script>
+</body>
+
+</html>
